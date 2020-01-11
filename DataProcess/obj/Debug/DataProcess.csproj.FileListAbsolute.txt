@@ -1,0 +1,4 @@
+D:\WorkData\DataProcess\bin\Debug\DataProcess.dll
+D:\WorkData\DataProcess\bin\Debug\DataProcess.pdb
+D:\WorkData\DataProcess\obj\Debug\DataProcess.dll
+D:\WorkData\DataProcess\obj\Debug\DataProcess.pdb

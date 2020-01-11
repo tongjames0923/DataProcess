@@ -1,0 +1,423 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataProcess</name>
+    </assembly>
+    <members>
+        <member name="M:DataProcess.StringCase.StringDealer.ChangeToDateTime(System.String)">
+            <summary>
+            以yyyyMMdd的格式来产生自定义的DateTime
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.StringCase.StringDealer.TotalWordNum(System.String,System.String)">
+            <summary>
+            特定字符串在某字符串中出现的次数
+            </summary>
+            <param name="words">某字符串</param>
+            <param name="key">特定字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.StringCase.StringDealer.MidIn(System.String,System.Char)">
+            <summary>
+            以某字符为分割，取其中的内容
+            </summary>
+            <param name="words">被分割的字符串</param>
+            <param name="key">分割字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.StringCase.StringDealer.MidIn(System.String,System.Char,System.Char)">
+            <summary>
+            以两个字符为分割，取其中的内容
+            </summary>
+            <param name="words">待分割的字符串</param>
+            <param name="before">起始字符</param>
+            <param name="after">结尾字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.TestSpeedTool.DataFunctionTester.SpeedTest(DataProcess.TestSpeedTool.DataFunctionTester.ISpeedTest)">
+            <summary>
+            测试某种操作的所需的时间
+            </summary>
+            <param name="test">测试的接口</param>
+            <returns></returns>
+        </member>
+        <member name="T:DataProcess.TestSpeedTool.DataFunctionTester.ISpeedTest">
+            <summary>
+            需要计算时间的操作的接口
+            </summary>
+        </member>
+        <member name="T:DataProcess.Xml.XmlItemType">
+            <summary>
+            Xml的指定项
+            </summary>
+        </member>
+        <member name="F:DataProcess.Xml.XmlItemType.InnerText">
+            <summary>
+            标签内容
+            </summary>
+        </member>
+        <member name="F:DataProcess.Xml.XmlItemType.Attributes">
+            <summary>
+            属性
+            </summary>
+        </member>
+        <member name="F:DataProcess.Xml.XmlItemType.Name">
+            <summary>
+            标签名
+            </summary>
+        </member>
+        <member name="T:DataProcess.Xml.XmlCase">
+            <summary>
+            Xml处理
+            </summary>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.#ctor(System.String)">
+            <summary>
+            实例化，设置默认节点路径
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.#ctor">
+            <summary>
+            默认的初始化
+            </summary>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.MakeXml(System.String,System.String)">
+            <summary>
+            创建一个xml文件
+            </summary>
+            <param name="RootElement">根节点名</param>
+            <param name="SaveLocation">储存位置</param>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlNodeCount(System.String)">
+            <summary>
+            计数Xml中特定节点下的所有子节点
+            </summary>
+            <param name="nodepath">需要计数的母节点路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlGetInnerText(System.Int32)">
+            <summary>
+            返回Innertext
+            </summary>
+            <param name="index">需要返回项的序号</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlGetInnerText(System.String)">
+            <summary>
+            返回InnerText的值
+            </summary>
+            <param name="InnerName">需要返回项的标签名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlItemList(DataProcess.Xml.XmlItemType,System.String)">
+            <summary>
+            返回某个节点下的节点列表
+            </summary>
+            <param name="type">需要返回的值的类型</param>
+            <param name="AttributesName">如果选择了属性类型，需要填写属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlItemIndex(System.String,DataProcess.Xml.XmlItemType)">
+            <summary>
+            返回xml中节点的索引位
+            </summary>
+            <param name="value">需要返回项的标签内容</param>
+            <param name="type">需要查找的类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlGetItemValue(System.String,System.String)">
+            <summary>
+            获取某一个的属性值
+            </summary>
+            <param name="Innername">需要返回项的标签内容</param>
+            <param name="AttributeName">需要返回的属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlGetItemValue(System.Int32,System.String)">
+            <summary>
+            获取某一个的属性值
+            </summary>
+            <param name="index">需要返回项的的序号</param>
+            <param name="AttributeName">需要返回的属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlChangeItemInnerText(System.Int32,System.String)">
+            <summary>
+            设置某一项的标签内容
+            </summary>
+            <param name="index">需要修改项的序号</param>
+            <param name="value">修改的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlChangeItemAttribute(System.Int32,System.String,System.String)">
+            <summary>
+            修改某一项属性
+            </summary>
+            <param name="index">需要修改项的序号</param>
+            <param name="AttributeName">需要修改的属性名</param>
+            <param name="value">需要修改的属性值</param>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlDeleteItem(System.String)">
+            <summary>
+            删除某一项
+            </summary>
+            <param name="InnerName">需要删除项的标签内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlDeleteItem(System.Int32)">
+            <summary>
+            删除某一项
+            </summary>
+            <param name="index">需要删除项的标签序号</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlAddItem(System.String,System.String,System.String[],System.String[])">
+            <summary>
+            增加一项
+            </summary>
+            <param name="Innername">增加项的标签名</param>
+            <param name="InnerText">增加项的标签内容</param>
+            <param name="AttributesName">增加项目的属性（可多个，需要与值相对应）</param>
+            <param name="AttributeValues">增加项的属性值（可多个，需要与属性排序相对应）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Xml.XmlCase.XmlAddItem(System.String,System.String)">
+            <summary>
+            增加一项
+            </summary>
+            <param name="Innername">增加项的标签名</param>
+            <param name="InnerText">增加项的标签内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.MD5Coder.MD5Encrypt(System.String)">
+            <summary>
+            生成MD5码
+            </summary>
+            <param name="text">需要生成MD5码的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Encrypt(System.String,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="content">需要加密的文本</param>
+            <param name="key">加密密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Decrypt(System.String,System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Encode">需要解密的字符串</param>
+            <param name="key">密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Decrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            解密
+            </summary>
+            <param name="Encode">需要解密的字符串</param>
+            <param name="key">密钥</param>
+            <param name="encode">编码类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Decrypt(System.IO.Stream,System.String,System.Text.Encoding)">
+            <summary>
+            解密
+            </summary>
+            <param name="content">需要解密的流</param>
+            <param name="key"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Encrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            加密
+            </summary>
+            <param name="content">需要加密的字符串</param>
+            <param name="key">密钥</param>
+            <param name="encode">编码类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.BaseEncryption.Encrypt(System.IO.Stream,System.String,System.Text.Encoding)">
+            <summary>
+            加密
+            </summary>
+            <param name="contents">需要加密的流</param>
+            <param name="key">密钥</param>
+            <param name="encode">编码类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:DataProcess.Encryption.Encryption">
+            <summary>
+            自制加密算法
+            </summary>
+        </member>
+        <member name="M:DataProcess.Encryption.Encryption.AdvancedEncrypt(System.String,System.String)">
+            <summary>
+            进阶版加密（缩短了加密后的字符串长度）
+            </summary>
+            <param name="content">需要加密的内容</param>
+            <param name="key">解锁密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.Encryption.Encryption.AdvancedDecrypt(System.String,System.String)">
+            <summary>
+            进阶版解密（缩短了加密后的字符串长度）
+            </summary>
+            <param name="Encode">密文</param>
+            <param name="key">解锁密钥</param>
+            <returns></returns>
+        </member>
+        <member name="T:DataProcess.DataCase.NumberCase">
+            <summary>
+            数据处理
+            </summary>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.IsNumbers(System.String)">
+            <summary>
+            检查字符串是否是数字
+            </summary>
+            <param name="z">需要检查的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.TwoToTen(System.String)">
+            <summary>
+            二进制转换为十进制
+            </summary>
+            <param name="z">一个二进制数，以字符串形式</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.TenToTwo(System.String)">
+            <summary>
+            十进制转换为二进制
+            </summary>
+            <param name="z">一个10进制的数，以字符串形式</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.IsSixteen(System.String)">
+            <summary>
+            检测开头是否有#以确认是否为十六进制数
+            </summary>
+            <param name="nums">需要检查的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.SixteenToTen(System.String)">
+            <summary>
+            十六进制转换为十进制
+            </summary>
+            <param name="z">需要转换的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.NumberCase.TenToSixTeen(System.String)">
+            <summary>
+            十进制转十六进制
+            </summary>
+            <param name="z">需要转换的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:DataProcess.DataCase.DataTool.ISortCondition">
+            <summary>
+            快速排序条件判定接口
+            </summary>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.ISortCondition.SortConditionBefore(System.Object,System.Object)">
+            <summary>
+            before大于等于key时返回true
+            </summary>
+            <param name="before">作为排序依据的对象</param>
+            <param name="key">另一个作为排序依据的对象（排序的坐标值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.ISortCondition.SortConditionAfter(System.Object,System.Object)">
+            <summary>
+            after小于等于key时返回true
+            </summary>
+            <param name="after">作为排序依据的对象</param>
+            <param name="key">另一个作为排序依据的对象（排序的坐标值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.CustomQuickSort``1(``0[],DataProcess.DataCase.DataTool.ISortCondition,System.Int32,System.Int32)">
+            <summary>
+            自定义类型数组的排序
+            </summary>
+            <typeparam name="T">需要排序的对象类型</typeparam>
+            <param name="array">需要排序的数组</param>
+            <param name="sort">排序的判定函数</param>
+            <param name="low">数组的起始位置，一般为0</param>
+            <param name="high">数组的最后位置，一般为数组长度-1</param>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.QuickCollate(System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            快速排序（适合数据量庞大的）
+            </summary>
+            <param name="array">需要排序的数组</param>
+            <param name="low">数组的起始位置，一般为0</param>
+            <param name="high">数组的最后位置，一般为数组长度-1</param>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.QuickCollate(System.Double[],System.Int32,System.Int32)">
+            <summary>
+            快速排序（适合数据量庞大的）
+            </summary>
+            <param name="array">需要排序的数组</param>
+            <param name="low">数组的起始位置，一般为0</param>
+            <param name="high">数组的最后位置，一般为数组长度-1</param>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.SelectCollate(System.Int32[],System.Boolean)">
+            <summary>
+            排序
+            </summary>
+            <param name="num">需要排序的数组</param>
+            <param name="isBigToSmall">true:从大到小排序，false：以小到大排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.SelectCollate(System.Double[],System.Boolean)">
+            <summary>
+            排序
+            </summary>
+            <param name="num">需要排序的数组</param>
+            <param name="isBigToSmall">true:从大到小排序，false：以小到大排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.BobCollate(System.Int32[],System.Boolean)">
+            <summary>
+            排序
+            </summary>
+            <param name="num">需要排序的数组</param>
+            <param name="isBigToSmall">true:从大到小排序，false：以小到大排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.BobCollate(System.Double[],System.Boolean)">
+            <summary>
+            排序
+            </summary>
+            <param name="num">需要排序的数组</param>
+            <param name="isBigToSmall">true:从大到小排序，false：以小到大排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.RemoveSame(System.Int32[])">
+            <summary>
+            去除重复
+            </summary>
+            <param name="a">需要去重的数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.RemoveSame(System.String[])">
+            <summary>
+            去除重复
+            </summary>
+            <param name="a">需要去重的数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataProcess.DataCase.DataTool.RemoveSame(System.Double[])">
+            <summary>
+            去除重复
+            </summary>
+            <param name="a">需要去重的数组</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

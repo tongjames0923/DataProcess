@@ -1,0 +1,5 @@
+D:\WorkData\DataProcess\bin\Release\DataProcess.dll
+D:\WorkData\DataProcess\bin\Release\DataProcess.pdb
+D:\WorkData\DataProcess\obj\Release\DataProcess.dll
+D:\WorkData\DataProcess\obj\Release\DataProcess.pdb
+D:\WorkData\DataProcess\bin\Release\DataProcess.xml
