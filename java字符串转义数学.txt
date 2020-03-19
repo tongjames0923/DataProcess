@@ -1,0 +1,183 @@
+ class StringToMath
+{
+    /// <summary>
+    /// 获取所有数字
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    private ArrayList<Double> getAlldouble(String[] nums)
+    {
+        ArrayList<Double> Tnum = new ArrayList<Double>();
+        for (String x :nums)
+        {
+            try {
+                double tmp=Double.valueOf(x);
+                Tnum.add(tmp);
+            }
+            catch (Exception e)
+            {
+            }
+
+        }
+        return Tnum;
+    }
+    /// <summary>
+    /// 获取所有的符号
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    private ArrayList<Character> getAllbaseSymbol(String a)
+    {
+        ArrayList<Character> Fuhao = new ArrayList<Character>();
+        char[] b = a.toCharArray();
+        for (char x : b)
+        {
+            if (x == '+')
+            {
+                Fuhao.add('+');
+            }
+            if (x == '-')
+            {
+                Fuhao.add('-');
+            }
+            if (x == '*')
+            {
+                Fuhao.add('*');
+            }
+            if (x == '/')
+            {
+                Fuhao.add('/');
+            }
+        }
+        return Fuhao;
+    }
+    /// <summary>
+    /// 不带括号的基础算术
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    private double getBase(String a)
+    {
+        if (a.startsWith("-"))
+        {
+            a="0"+a;
+        }
+        String[] res=a.split("\\+|\\*|-|/");
+        ArrayList<Double> Tnum = getAlldouble(res);
+        ArrayList<Character> Fuhao = getAllbaseSymbol(a);
+        if (Tnum.size() > 0)
+        {
+            for (int i = 0; i < Fuhao.size()-1;)
+            {
+                if (Fuhao.get(i) == '*' || Fuhao.get(i)== '/')
+                {
+                    switch (Fuhao.get(i))
+                    {
+                        case '*':
+                            Tnum.add(i, Tnum.get(i) * Tnum.get(i+1));
+                            Tnum.remove(i + 2);
+                            Tnum.remove(i + 1);
+                            Fuhao.remove(i);
+                            break;
+                        case '/':
+                            Tnum.add(i, Tnum.get(i)/Tnum.get(i+1));
+                            Tnum.remove(i + 2);
+                            Tnum.remove(i + 1);
+                            Fuhao.remove(i);
+                            break;
+                    }
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            for (int i = 0; Tnum.size() != 1;)
+            {
+                switch (Fuhao.get(i))
+                {
+                    case '+':
+                        Tnum.set(i,Tnum.get(i) + Tnum.get(i+1)) ;
+                        Tnum.remove(i + 1);
+                        Fuhao.remove(i);
+                        break;
+                    case '-':
+                        Tnum.set(i,Tnum.get(i)- Tnum.get(i+1)) ;
+                        Tnum.remove(i + 1);
+                        Fuhao.remove(i);
+                        break;
+                }
+            }
+
+        }
+        return Tnum.get(0);
+    }
+    /// <summary>
+    /// 提取括号中的内容
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    String[] MidIn(String a)
+    {
+        ArrayList<String> res = new ArrayList<String>();
+        String z = "";
+        boolean isstart = false;
+        for (char x : a.toCharArray())
+        {
+            if (x == '(')
+            {
+                z = "";
+                isstart = true;
+            }
+            else if (x == ')'&&isstart==true)
+            {
+                res.add(z);
+                isstart = false;
+            }
+
+            else
+            {
+                if (isstart == true)
+                {
+                    z += x;
+                }
+            }
+        }
+        String[] strings = new String[res.size()];
+        int j=0;
+        for (String x:res
+             ) {
+            strings[j]=x;
+            j++;
+        }
+        return strings;
+    }
+    /// <summary>
+    /// 将括号进行剥离操作
+    /// </summary>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    String digOut(String source)
+    {
+        String[] res = MidIn(source);
+        if (res.length==0)
+        {
+            return source;
+        }
+        for (int i = 0; i < res.length; i++)
+            source = source.replace("(" + res[i] + ")", String.valueOf( getBase(res[i])));
+        return digOut(source);
+    }
+    /// <summary>
+    /// 计算
+    /// </summary>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public double Caculate(String source)
+    {
+
+        String x = digOut(source);
+        return getBase(x);
+
+    }
+}

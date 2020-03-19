@@ -1,0 +1,172 @@
+    public class StringToMath
+    {
+        /// <summary>
+        /// 获取所有数字
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        private List<double> getAlldouble(string[] nums)
+        {
+            List<double> Tnum = new List<double>();
+            foreach (string x in nums)
+            {
+                double tmp;
+                if (double.TryParse(x, out tmp))
+                {
+                    Tnum.Add(tmp);
+                }
+            }
+            return Tnum;
+        }
+        /// <summary>
+        /// 获取所有的符号
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        private List<char> getAllbaseSymbol(string a)
+        {
+            List<char> Fuhao = new List<char>();
+            char[] b = a.ToCharArray();
+            foreach (char x in b)
+            {
+                if (x == '+')
+                {
+                    Fuhao.Add('+');
+                }
+                if (x == '-')
+                {
+                    Fuhao.Add('-');
+                }
+                if (x == '*')
+                {
+                    Fuhao.Add('*');
+                }
+                if (x == '/')
+                {
+                    Fuhao.Add('/');
+                }
+            }
+            return Fuhao;
+        }
+        /// <summary>
+        /// 不带括号的基础算术
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        private double getBase(string a)
+        {
+            if (a.StartsWith("-"))
+            {
+               a= a.Insert(0, "0");
+            }
+            List<double> Tnum = getAlldouble(a.Split(new char[] { '+', '-', '*', '/' }));
+            List<char> Fuhao = getAllbaseSymbol(a);
+            if (Tnum.Count > 0)
+            {
+                for (int i = 0; i < Fuhao.Count;)
+                {
+                    if (Fuhao[i] == '*' || Fuhao[i] == '/')
+                    {
+                        switch (Fuhao[i])
+                        {
+                            case '*':
+                                Tnum.Insert(i, Tnum[i] * Tnum[i + 1]);
+                                Tnum.RemoveAt(i + 2);
+                                Tnum.RemoveAt(i + 1);
+                                Fuhao.RemoveAt(i);
+                                break;
+                            case '/':
+                                Tnum.Insert(i, Tnum[i] / Tnum[i + 1]);
+                                Tnum.RemoveAt(i + 2);
+                                Tnum.RemoveAt(i + 1);
+                                Fuhao.RemoveAt(i);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                for (int i = 0; Tnum.Count != 1;)
+                {
+                    switch (Fuhao[i])
+                    {
+                        case '+':
+                            Tnum[i] = Tnum[i] + Tnum[i + 1];
+                            Tnum.RemoveAt(i + 1);
+                            Fuhao.RemoveAt(i);
+                            break;
+                        case '-':
+                            Tnum[i] = Tnum[i] - Tnum[i + 1];
+                            Tnum.RemoveAt(i + 1);
+                            Fuhao.RemoveAt(i);
+                            break;
+                    }
+                }
+
+            }
+            return Tnum[0];
+        }
+        /// <summary>
+        /// 提取括号中的内容
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        string[] MidIn(string a)
+        {
+            List<string> res = new List<string>();
+            string z = "";
+            bool isstart = false;
+            foreach (char x in a.ToCharArray())
+            {
+                if (x == '(')
+                {
+                    z = "";
+                    isstart = true;
+                }
+                else if (x == ')'&&isstart==true)
+                {
+                    res.Add(z);
+                    isstart = false;
+                }
+
+                else
+                {
+                    if (isstart == true)
+                    {
+                        z += x;
+                    }
+                }
+            }
+            return res.ToArray();
+        }
+        /// <summary>
+        /// 将括号进行剥离操作
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        string digOut(string source)
+        {
+            string[] res = MidIn(source);
+            if (res.Length == 0)
+            {
+                return source;
+            }
+            for (int i = 0; i < res.Length; i++)
+                source = source.Replace("(" + res[i] + ")", getBase(res[i]).ToString());
+            return digOut(source);
+        }
+        /// <summary>
+        /// 计算
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public double Caculate(string source)
+        {
+
+            string x = digOut(source);
+            return getBase(x);
+
+        }
+    }
